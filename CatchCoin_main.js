@@ -266,10 +266,7 @@
           knight.setVelocityY(-1200);
         }
             
-            else if((this.input.activePointer.isDown)
-            && knight.body.touching.down){
-          knight.setVelocityY(-1200);
-        }
+          
 
       }
 
