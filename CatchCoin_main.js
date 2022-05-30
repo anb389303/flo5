@@ -178,6 +178,7 @@
 
         // initialize Keyboard
         keys = this.input.keyboard.createCursorKeys();
+            jump = this.input.on('pointerdown', this.jump, this);
 
         //define coin timer for dropping coins from sky
         coinTimer = this.time.addEvent({
@@ -248,10 +249,18 @@
           knight.play("knight_idle", true);
 
         }
-
+        
+            
+         jump() {
+  if (this.knight.body.touching.down) {
+    this.knight.setVelocityY(-330);
+  }
+}   
+            
+            
         // add Jump keypad funcitionality when hitting arrow up and knight is on the floor
         if((keys.up.isDown
-          || keys.mousePointer.isDown)
+          || keys.space.isDown)
             && knight.body.touching.down){
           knight.setVelocityY(-1200);
         }
