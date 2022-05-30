@@ -226,51 +226,15 @@
         // execute only if !gameOver
         if (gameOver) return;
 
-        if (game.input.pointer1.isDown){ if (Math.floor(game.input.x/(game.width/2)){ knight.body.velocity.x = 150;     
+        if (game.input.pointer1.isDown){ if (Math.floor(game.input.x/(game.width/2)= LEFT){ knight.body.velocity.x = 150;     
                                                                                                 knight.animations.play('right');    }  
-                                        if (Math.floor(game.input.x/(game.width/2)) { knight.body.velocity.x = -150;      
+                                        if (Math.floor(game.input.x/(game.width/2)=RIGHT) { knight.body.velocity.x = -150;      
                                                                                                 knight.animations.play('left');    }    
         }else{ knight.animations.stop();      knight.frame = 4;  }
             
                   
             //add move keypad funcitionality
-        if(keys.left.isDown){
-          if(keys.shift.isDown){
-            knight.setVelocityX(-600);
-          } 
-               
-              
-              else {
-            knight.setVelocityX(-300);
-          }
-          knight.play("knight_run", true);
-          knight.flipX = true;
-
-        }else if (keys.right.isDown){
-          if(keys.shift.isDown){
-            knight.setVelocityX(600);
-          } else {
-            knight.setVelocityX(300);
-          }
-          knight.play("knight_run", true);
-          knight.flipX = false;
-
-        }else {
-          knight.setVelocityX(0);
-          knight.play("knight_idle", true);
-
-        }
-        
-            
-    
-            
-            
-        // add Jump keypad funcitionality when hitting arrow up and knight is on the floor
-        if((keys.up.isDown
-          || keys.space.isDown)
-            && knight.body.touching.down){
-          knight.setVelocityY(-1200);
-        }
+       
             
           
 
