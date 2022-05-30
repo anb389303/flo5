@@ -226,9 +226,9 @@
         // execute only if !gameOver
         if (gameOver) return;
 
-        if (game.input.pointer1.isDown){ if (Math.floor(game.input.x/(game.width/2)) === LEFT) { knight.body.velocity.x = 150;     
+        if (game.input.pointer1.isDown){ if (Math.floor(game.input.x/(game.width/2)){ knight.body.velocity.x = 150;     
                                                                                                 knight.animations.play('right');    }  
-                                        if (Math.floor(game.input.x/(game.width/2)) === RIGHT) { knight.body.velocity.x = -150;      
+                                        if (Math.floor(game.input.x/(game.width/2)) { knight.body.velocity.x = -150;      
                                                                                                 knight.animations.play('left');    }    
         }else{ knight.animations.stop();      knight.frame = 4;  }
             
