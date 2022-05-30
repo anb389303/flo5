@@ -229,7 +229,7 @@
                                                                                                 knight.animations.play('right');    }  
                                         if (Math.floor(game.input.x/(game.width/2)) === RIGHT) { knight.body.velocity.x = -150;      
                                                                                                 knight.animations.play('left');    }    
-        }else{ player.animations.stop();      player.frame = 4;  }
+        }else{ knight.animations.stop();      knight.frame = 4;  }
             
                   
             //add move keypad funcitionality
