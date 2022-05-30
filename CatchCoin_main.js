@@ -220,16 +220,25 @@
       * Update
       ****************************************************************/
       // gameUpdate run multible times
+
+if (this.cursors.up.isDown && this.knight.body.touching.down || this.spacebar.isDown && this.knight.body.touching.down || this.game.input.mousePointer.isDown && this.knight.body.touching.down || this.game.input.pointer1.isDown && this.knight.body.touching.down) {
+
+           
+
+
+
+this.knight.body.velocity.y = -500;
+
+          }
+
+
+
+
+
       function gameUpdate() {
         //monitoring inputs and telling game how to update
             
-            
-        if (this.keys.up.isDown && this.knight.body.touching.down || this.spacebar.isDown && this.knight.body.touching.down || this.game.input.mousePointer.isDown && this.knight.body.touching.down || this.game.input.pointer1.isDown && this.knight.body.touching.down) {
-
-           this.knight.body.velocity.y = -500;
-
-          }
-    
+        
             
             
             
