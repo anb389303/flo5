@@ -177,7 +177,7 @@
         this.physics.add.collider(crates, knight);
 
         // initialize Keyboard
-        keys = this.input.keyboard.createCursorKeys()||this.input.on('pointerdown', this.jump, this);
+        keys = this.input.keyboard.createCursorKeys();
             
         //define coin timer for dropping coins from sky
         coinTimer = this.time.addEvent({
@@ -256,6 +256,11 @@
         // add Jump keypad funcitionality when hitting arrow up and knight is on the floor
         if((keys.up.isDown
           || keys.space.isDown)
+            && knight.body.touching.down){
+          knight.setVelocityY(-1200);
+        }
+            
+            else if((this.input.activePointer.isDown)
             && knight.body.touching.down){
           knight.setVelocityY(-1200);
         }
