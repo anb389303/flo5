@@ -8,6 +8,7 @@
       const HEIGHT = 750;
       const GAME_TIME = 60;
 
+       var RIGHT = 0, LEFT = 1;
       // define Keyboard
       var keys;
       // define characters and objects
@@ -224,15 +225,19 @@
         // execute only if !gameOver
         if (gameOver) return;
 
-        //add move keypad funcitionality
+        if (game.input.pointer1.isDown){ if (Math.floor(game.input.x/(game.width/2)) === LEFT) { knight.body.velocity.x = 150;     
+                                                                                                knight.animations.play('right');    }  
+                                        if (Math.floor(game.input.x/(game.width/2)) === RIGHT) { knight.body.velocity.x = -150;      
+                                                                                                knight.animations.play('left');    }    
+        }else{ player.animations.stop();      player.frame = 4;  }
+            
+                  
+            //add move keypad funcitionality
         if(keys.left.isDown){
           if(keys.shift.isDown){
             knight.setVelocityX(-600);
           } 
-               else if((this.input.activePointer.isDown)
-            && knight.body.touching.down){
-          knight.setVelocityY(-600);
-        }
+               
               
               else {
             knight.setVelocityX(-300);
