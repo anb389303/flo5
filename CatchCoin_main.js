@@ -228,7 +228,13 @@
         if(keys.left.isDown){
           if(keys.shift.isDown){
             knight.setVelocityX(-600);
-          } else {
+          } 
+               else if((this.input.activePointer.isDown)
+            && knight.body.touching.down){
+          knight.setVelocityY(-600);
+        }
+              
+              else {
             knight.setVelocityX(-300);
           }
           knight.play("knight_run", true);
