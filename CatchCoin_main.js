@@ -10,20 +10,7 @@
 
       
 
-var land;
 
-var shadow;
-
-var turret;
-
-
-
-
-
-
-
-
-var currentSpeed = 0;
 
 // define Keyboard
       var keys;
@@ -290,37 +277,8 @@ var currentSpeed = 0;
             
             
             
-        //add move keypad funcitionality
-        if(keys.left.isDown){
-          if(keys.shift.isDown){
-            knight.setVelocityX(-600);
-          } else {
-            knight.setVelocityX(-300);
-          }
-          knight.play("knight_run", true);
-          knight.flipX = true;
+        
 
-        }else if (keys.right.isDown){
-          if(keys.shift.isDown){
-            knight.setVelocityX(600);
-          } else {
-            knight.setVelocityX(300);
-          }
-          knight.play("knight_run", true);
-          knight.flipX = false;
-
-        }else {
-          knight.setVelocityX(0);
-          knight.play("knight_idle", true);
-
-        }
-
-        // add Jump keypad funcitionality when hitting arrow up and knight is on the floor
-        if((keys.up.isDown
-          || keys.space.isDown)
-            && knight.body.touching.down){
-          knight.setVelocityY(-1200);
-        }
 
       }
 
