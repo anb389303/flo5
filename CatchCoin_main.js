@@ -237,8 +237,7 @@
         // execute only if !gameOver
         if (gameOver) return;
             
-            if (game.input.pointer1.isDown){ if (Math.floor(game.input.x/(game.width/2)) === LEFT) { player.body.velocity.x = 150; player.animations.play('right');    }    if (Math.floor(game.input.x/(game.width/2)) === RIGHT) { player.body.velocity.x = -150;  player.animations.play('left');    }    }
-else{ player.animations.stop();  player.frame = 4;  }            
+     button.events.onInputOver.add(isTouchingButton, this);function isTouchingButton(button, pointer) {  }            
 
         //if (game.input.pointer1.isDown){ if (Math.floor(game.input.x/(game.width/2)= LEFT){ knight.body.velocity.x = 150;     
                                                                                               //  knight.animations.play('right');    }  
