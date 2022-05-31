@@ -8,8 +8,8 @@
       const HEIGHT = 750;
       const GAME_TIME = 60;
 
-       var LEFT = 1;
-       var RIGHT = 0;
+       
+       
       // define Keyboard
       var keys;
       // define characters and objects
