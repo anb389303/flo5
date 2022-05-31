@@ -117,15 +117,14 @@
 
             
             
-            this.scrollingMap = game.add.tileSprite(0, 0, game.width / 2 + colors.length * 90 + 64, game.height, "transp");
+            
     this.scrollingMap.inputEnabled = true;
     this.scrollingMap.input.enableDrag(false);
     this.scrollingMap.savedPosition = new Phaser.Point(this.scrollingMap.x, this.scrollingMap.y);
     this.scrollingMap.isBeingDragged = false;
     this.scrollingMap.movingSpeed = 0;
     this.scrollingMap.input.allowVerticalDrag = false;
-    this.scrollingMap.input.boundsRect = new Phaser.Rectangle(game.width - this.scrollingMap.width, game.height - this.scrollingMap.height, this.scrollingMap.width * 2 - game.width, this.scrollingMap.height * 2 - game.height);            
-            
+    
             
             
             
