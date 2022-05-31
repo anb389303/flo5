@@ -100,7 +100,41 @@
       /***************************************************************
       * create
       ****************************************************************/
-      function gameCreate() {
+      
+
+addHero: function () {
+    this.hero = game.add.sprite(game.width / 2, game.height * gameOptions.floorStart - 40, "hero");
+    this.gameGroup.add(this.hero)
+    this.hero.anchor.set(0.5, 0);
+    game.physics.enable(this.hero, Phaser.Physics.ARCADE);
+    this.hero.body.collideWorldBounds = true;
+    this.hero.body.gravity.y = gameOptions.playerGravity;
+    this.hero.body.velocity.x = gameOptions.playerSpeed;
+    this.hero.body.onWorldBounds = new Phaser.Signal();
+    this.hero.body.onWorldBounds.add(function (sprite, up, down, left, right) {
+      if (left) {
+        this.hero.body.velocity.x = gameOptions.playerSpeed;
+        this.hero.scale.x = 1;
+      }
+      if (right) {
+        this.hero.body.velocity.x = -gameOptions.playerSpeed;
+        this.hero.scale.x = -1;
+      }
+      if (down) {
+        var score = this.reachedFloor * this.collectedDiamonds;
+        localStorage.setItem(gameOptions.localStorageName, JSON.stringify({
+          score: Math.max(score, this.savedData.score)
+        }));
+        game.state.start("PlayGame");
+      }
+    }, this)
+  },
+
+
+
+
+
+function gameCreate() {
         //inital setup logic on the asset and other setup
         //this.add.image(540, 250, "knight");
 
