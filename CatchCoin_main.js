@@ -8,8 +8,6 @@
       const HEIGHT = 750;
       const GAME_TIME = 60;
 
-       
-    
       // define Keyboard
       var keys;
       // define characters and objects
@@ -56,149 +54,6 @@
       }
 
 
-      
-      
-      move: function (event) {
-
-        if (this.game.input.pollLocked)
-        {
-            return;
-        }
-
-        if (typeof event.button !== 'undefined')
-        {
-            this.button = event.button;
-        }
-
-        this.clientX = event.clientX;
-        this.clientY = event.clientY;
-
-        this.pageX = event.pageX;
-        this.pageY = event.pageY;
-
-        this.screenX = event.screenX;
-        this.screenY = event.screenY;
-
-        this.x = (this.pageX - this.game.stage.offset.x) * this.game.input.scale.x;
-        this.y = (this.pageY - this.game.stage.offset.y) * this.game.input.scale.y;
-
-        this.position.setTo(this.x, this.y);
-        this.circle.x = this.x;
-        this.circle.y = this.y;
-
-        if (this.game.input.multiInputOverride == Phaser.Input.MOUSE_OVERRIDES_TOUCH || this.game.input.multiInputOverride == Phaser.Input.MOUSE_TOUCH_COMBINE || (this.game.input.multiInputOverride == Phaser.Input.TOUCH_OVERRIDES_MOUSE && this.game.input.currentPointers === 0))
-        {
-            this.game.input.activePointer = this;
-            this.game.input.x = this.x;
-            this.game.input.y = this.y;
-            this.game.input.position.setTo(this.game.input.x, this.game.input.y);
-            this.game.input.circle.x = this.game.input.x;
-            this.game.input.circle.y = this.game.input.y;
-        }
-
-        //  If the game is paused we don't process any target objects or callbacks
-        if (this.game.paused)
-        {
-            return this;
-        }
-
-        if (this.game.input.moveCallback)
-        {
-            this.game.input.moveCallback.call(this.game.input.moveCallbackContext, this, this.x, this.y);
-        }
-
-        //  Easy out if we're dragging something and it still exists
-        if (this.targetObject !== null && this.targetObject.isDragged === true)
-        {
-            if (this.targetObject.update(this) === false)
-            {
-                this.targetObject = null;
-            }
-
-            return this;
-        }
-
-        //  Work out which object is on the top
-        this._highestRenderOrderID = -1;
-        this._highestRenderObject = null;
-        this._highestInputPriorityID = -1;
-
-        //  Just run through the linked list
-        if (this.game.input.interactiveItems.total > 0)
-        {
-            var currentNode = this.game.input.interactiveItems.next;
-
-            do
-            {
-                //  If the object is using pixelPerfect checks, or has a higher InputManager.PriorityID OR if the priority ID is the same as the current highest AND it has a higher renderOrderID, then set it to the top
-                if (currentNode.pixelPerfect || currentNode.priorityID > this._highestInputPriorityID || (currentNode.priorityID == this._highestInputPriorityID && currentNode.sprite.renderOrderID > this._highestRenderOrderID))
-                {
-                    if (currentNode.checkPointerOver(this))
-                    {
-                        // console.log('HRO set', currentNode.sprite.name);
-                        this._highestRenderOrderID = currentNode.sprite.renderOrderID;
-                        this._highestInputPriorityID = currentNode.priorityID;
-                        this._highestRenderObject = currentNode;
-                    }
-                }
-                currentNode = currentNode.next;
-            }
-            while (currentNode != null)
-        }
-
-        if (this._highestRenderObject == null)
-        {
-            //  The pointer isn't currently over anything, check if we've got a lingering previous target
-            if (this.targetObject)
-            {
-                // console.log("The pointer isn't currently over anything, check if we've got a lingering previous target");
-                this.targetObject._pointerOutHandler(this);
-                this.targetObject = null;
-            }
-        }
-        else
-        {
-            if (this.targetObject == null)
-            {
-                //  And now set the new one
-                // console.log('And now set the new one');
-                this.targetObject = this._highestRenderObject;
-                this._highestRenderObject._pointerOverHandler(this);
-            }
-            else
-            {
-                //  We've got a target from the last update
-                // console.log("We've got a target from the last update");
-                if (this.targetObject == this._highestRenderObject)
-                {
-                    //  Same target as before, so update it
-                    // console.log("Same target as before, so update it");
-                    if (this._highestRenderObject.update(this) === false)
-                    {
-                        this.targetObject = null;
-                    }
-                }
-                else
-                {
-                    //  The target has changed, so tell the old one we've left it
-                    // console.log("The target has changed, so tell the old one we've left it");
-                    this.targetObject._pointerOutHandler(this);
-
-                    //  And now set the new one
-                    this.targetObject = this._highestRenderObject;
-                    this.targetObject._pointerOverHandler(this);
-                }
-            }
-        }
-
-        return this;
-
-    },
-      
-      
-      
-      
-      
 /******************************************************************************
 * Function implementation
 ******************************************************************************/
@@ -247,16 +102,10 @@
       function gameCreate() {
         //inital setup logic on the asset and other setup
         //this.add.image(540, 250, "knight");
+
         //set background - set before all other items so it is in background
         this.add.image(WIDTH/2, HEIGHT/2,"background")
 
-            
-            game.input.addPointer();
-    game.input.addPointer();
-    game.input.addPointer();
-    game.input.addPointer();
-            
-            
         // load knight with sprite mehtod using physics
         knight = this.physics.add.sprite(50,100,"knight");
         //set bounding box
@@ -329,7 +178,7 @@
 
         // initialize Keyboard
         keys = this.input.keyboard.createCursorKeys();
-            
+
         //define coin timer for dropping coins from sky
         coinTimer = this.time.addEvent({
           //delay: 3000, // timer repeats all 3 sec.
@@ -369,43 +218,43 @@
       * Update
       ****************************************************************/
       // gameUpdate run multible times
-
-
-function render() {
-
-    //  Just renders out the pointer data when you touch the canvas
-    game.debug.pointer(game.input.mousePointer);
-    game.debug.pointer(game.input.pointer1);
-    game.debug.pointer(game.input.pointer2);
-    game.debug.pointer(game.input.pointer3);
-    game.debug.pointer(game.input.pointer4);
-    game.debug.pointer(game.input.pointer5);
-    game.debug.pointer(game.input.pointer6);
-
-}
-
-
-
       function gameUpdate() {
         //monitoring inputs and telling game how to update
-            
-  
-            
-            
 
         // execute only if !gameOver
         if (gameOver) return;
-            
 
-     
-            
-          
-            
-                  
-            
-       
-            
-          
+        //add move keypad funcitionality
+        if(keys.left.isDown){
+          if(keys.shift.isDown){
+            knight.setVelocityX(-600);
+          } else {
+            knight.setVelocityX(-300);
+          }
+          knight.play("knight_run", true);
+          knight.flipX = true;
+
+        }else if (keys.right.isDown){
+          if(keys.shift.isDown){
+            knight.setVelocityX(600);
+          } else {
+            knight.setVelocityX(300);
+          }
+          knight.play("knight_run", true);
+          knight.flipX = false;
+
+        }else {
+          knight.setVelocityX(0);
+          knight.play("knight_idle", true);
+
+        }
+
+        // add Jump keypad funcitionality when hitting arrow up and knight is on the floor
+        if((keys.up.isDown
+          || keys.space.isDown)
+            && knight.body.touching.down){
+          knight.setVelocityY(-1200);
+        }
 
       }
 
