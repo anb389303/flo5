@@ -10,6 +10,8 @@
 
       // define Keyboard
       var keys;
+  var keypo;
+var keypd;
       // define characters and objects
       var knight;
       var crates;
@@ -178,7 +180,8 @@
 
         // initialize Keyboard
         keys = this.input.keyboard.createCursorKeys();
-
+         keypo = game.input.pointer1;
+            keypd = game.input.pointer2;
         //define coin timer for dropping coins from sky
         coinTimer = this.time.addEvent({
           //delay: 3000, // timer repeats all 3 sec.
@@ -225,7 +228,7 @@
         if (gameOver) return;
 
         //add move keypad funcitionality
-        if(keys.left.isDown){
+        if(keypo.left.isDown){
           if(keys.shift.isDown){
             knight.setVelocityX(-600);
           } else {
