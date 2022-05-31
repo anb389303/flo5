@@ -10,8 +10,7 @@
 
       // define Keyboard
       var keys;
-  var keypo;
-var keypd;
+
       // define characters and objects
       var knight;
       var crates;
@@ -116,6 +115,22 @@ var keypd;
         knight.scaleX = 0.15;
         knight.scaleY = knight.scaleX;
 
+            
+            
+            this.scrollingMap = game.add.tileSprite(0, 0, game.width / 2 + colors.length * 90 + 64, game.height, "transp");
+    this.scrollingMap.inputEnabled = true;
+    this.scrollingMap.input.enableDrag(false);
+    this.scrollingMap.savedPosition = new Phaser.Point(this.scrollingMap.x, this.scrollingMap.y);
+    this.scrollingMap.isBeingDragged = false;
+    this.scrollingMap.movingSpeed = 0;
+    this.scrollingMap.input.allowVerticalDrag = false;
+    this.scrollingMap.input.boundsRect = new Phaser.Rectangle(game.width - this.scrollingMap.width, game.height - this.scrollingMap.height, this.scrollingMap.width * 2 - game.width, this.scrollingMap.height * 2 - game.height);            
+            
+            
+            
+            
+            
+            
         // create animation frames
         this.anims.create({
           key: "knight_run",
@@ -228,8 +243,8 @@ var keypd;
         if (gameOver) return;
 
         //add move keypad funcitionality
-        if(game.input.pointer1 ){
-          if(knight.body.touching.down){
+        if(keys.left.isDown){
+          if(keys.shift.isDown){
             knight.setVelocityX(-600);
           } else {
             knight.setVelocityX(-300);
