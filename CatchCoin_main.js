@@ -228,7 +228,7 @@ var keypd;
         if (gameOver) return;
 
         //add move keypad funcitionality
-        if(keypo.left.isDown){
+        if(game.input.activePointer){
           if(keys.shift.isDown){
             knight.setVelocityX(-600);
           } else {
