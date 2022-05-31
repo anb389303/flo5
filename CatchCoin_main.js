@@ -237,7 +237,7 @@
         // execute only if !gameOver
         if (gameOver) return;
             
-if ((cursors.up.isDown || onSwipe()) && player.body.touching.down)  {      player.body.velocity.y = -350;  }    
+if ((keys.up.isDown || onSwipe()) && knight.body.touching.down)  {      knight.body.velocity.y = -350;  }    
             
             
             //if (game.input.pointer1.isDown){ if (Math.floor(game.input.x/(game.width/2)= LEFT){ knight.body.velocity.x = 150;     
