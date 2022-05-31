@@ -237,7 +237,7 @@ var keypd;
           knight.play("knight_run", true);
           knight.flipX = true;
 
-        }else if (keys.right.isDown){
+        }else if (game.input.activePointer && knight.body.touching.down){
           if(keys.shift.isDown){
             knight.setVelocityX(600);
           } else {
