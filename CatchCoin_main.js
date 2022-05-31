@@ -104,10 +104,16 @@
       function gameCreate() {
         //inital setup logic on the asset and other setup
         //this.add.image(540, 250, "knight");
-
         //set background - set before all other items so it is in background
         this.add.image(WIDTH/2, HEIGHT/2,"background")
 
+            
+            game.input.addPointer();
+    game.input.addPointer();
+    game.input.addPointer();
+    game.input.addPointer();
+            
+            
         // load knight with sprite mehtod using physics
         knight = this.physics.add.sprite(50,100,"knight");
         //set bounding box
@@ -222,8 +228,18 @@
       // gameUpdate run multible times
 
 
+function render() {
 
+    //  Just renders out the pointer data when you touch the canvas
+    game.debug.pointer(game.input.mousePointer);
+    game.debug.pointer(game.input.pointer1);
+    game.debug.pointer(game.input.pointer2);
+    game.debug.pointer(game.input.pointer3);
+    game.debug.pointer(game.input.pointer4);
+    game.debug.pointer(game.input.pointer5);
+    game.debug.pointer(game.input.pointer6);
 
+}
 
 
 
