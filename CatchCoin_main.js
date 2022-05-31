@@ -10,7 +10,6 @@
 
       // define Keyboard
       var keys;
-
       // define characters and objects
       var knight;
       var crates;
@@ -100,41 +99,7 @@
       /***************************************************************
       * create
       ****************************************************************/
-      
-
-addHero: function () {
-    this.hero = game.add.sprite(game.width / 2, game.height * gameOptions.floorStart - 40, "hero");
-    this.gameGroup.add(this.hero)
-    this.hero.anchor.set(0.5, 0);
-    game.physics.enable(this.hero, Phaser.Physics.ARCADE);
-    this.hero.body.collideWorldBounds = true;
-    this.hero.body.gravity.y = gameOptions.playerGravity;
-    this.hero.body.velocity.x = gameOptions.playerSpeed;
-    this.hero.body.onWorldBounds = new Phaser.Signal();
-    this.hero.body.onWorldBounds.add(function (sprite, up, down, left, right) {
-      if (left) {
-        this.hero.body.velocity.x = gameOptions.playerSpeed;
-        this.hero.scale.x = 1;
-      }
-      if (right) {
-        this.hero.body.velocity.x = -gameOptions.playerSpeed;
-        this.hero.scale.x = -1;
-      }
-      if (down) {
-        var score = this.reachedFloor * this.collectedDiamonds;
-        localStorage.setItem(gameOptions.localStorageName, JSON.stringify({
-          score: Math.max(score, this.savedData.score)
-        }));
-        game.state.start("PlayGame");
-      }
-    }, this)
-  },
-
-
-
-
-
-function gameCreate() {
+      function gameCreate() {
         //inital setup logic on the asset and other setup
         //this.add.image(540, 250, "knight");
 
@@ -149,16 +114,6 @@ function gameCreate() {
         knight.scaleX = 0.15;
         knight.scaleY = knight.scaleX;
 
-            
-            
-            
-    
-    
-            
-            
-            
-            
-            
         // create animation frames
         this.anims.create({
           key: "knight_run",
@@ -223,8 +178,7 @@ function gameCreate() {
 
         // initialize Keyboard
         keys = this.input.keyboard.createCursorKeys();
-         keypo = game.input.pointer1;
-            keypd = game.input.pointer2;
+
         //define coin timer for dropping coins from sky
         coinTimer = this.time.addEvent({
           //delay: 3000, // timer repeats all 3 sec.
@@ -296,7 +250,7 @@ function gameCreate() {
         }
 
         // add Jump keypad funcitionality when hitting arrow up and knight is on the floor
-       if((keys.up.isDown
+        if((keys.up.isDown
           || keys.space.isDown)
             && knight.body.touching.down){
           knight.setVelocityY(-1200);
