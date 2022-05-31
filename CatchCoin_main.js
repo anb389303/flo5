@@ -305,22 +305,12 @@
       function updateTimeLeft() {
 
         if(gameOver){
-          if(!coinsSent){
-/*
-            // get address from User Input
-            var address = prompt("Please enter your ETH address", "");
-            if(address == null || address == ""){
-              alert("User cancelled the prompt");
-            }
-            else{
-              mintAfterGame(address, score);
-            }
-*/
+         
+
             //get address from Metamask
             mintAfterGame(score);
 
-            coinsSent = true;
-          }
+          
           return;
         };
 
