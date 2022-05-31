@@ -225,7 +225,7 @@
         if (gameOver) return;
 
         //add move keypad funcitionality
-        if(game.input.pointer1.isDown){
+        if(this.game.input.pointer1.isDown && this.knight.body.touching.down){
           if(keys.shift.isDown){
             knight.setVelocityX(-600);
           } else {
@@ -234,7 +234,7 @@
           knight.play("knight_run", true);
           knight.flipX = true;
 
-        }else if (game.input.pointer2.isDown){
+        }else if (this.game.input.pointer2.isDown && this.knight.body.touching.down){
           if(keys.shift.isDown){
             knight.setVelocityX(600);
           } else {
