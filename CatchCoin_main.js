@@ -221,15 +221,9 @@
       ****************************************************************/
       // gameUpdate run multible times
 
-if (this.cursors.up.isDown && this.knight.body.touching.down || this.spacebar.isDown && this.knight.body.touching.down || this.game.input.mousePointer.isDown && this.knight.body.touching.down || this.game.input.pointer1.isDown && this.knight.body.touching.down) {
-
-           
-
-
-
-this.knight.body.velocity.y = -500;
-
-          }
+if ( this.game.input.pointer1.isDown && this.knight.body.touching.down) {
+this.knight.body.velocity.y = 500;
+ }
 
 
 
