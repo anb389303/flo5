@@ -182,8 +182,7 @@
 
         // initialize Keyboard
         keys = this.input.keyboard.createCursorKeys();
-     knight.bringToTop();
-    turret.bringToTop();
+  
             
             //define coin timer for dropping coins from sky
         coinTimer = this.time.addEvent({
