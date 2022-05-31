@@ -118,12 +118,7 @@
             
             
             
-    this.scrollingMap.inputEnabled = true;
-    this.scrollingMap.input.enableDrag(false);
-    this.scrollingMap.savedPosition = new Phaser.Point(this.scrollingMap.x, this.scrollingMap.y);
-    this.scrollingMap.isBeingDragged = false;
-    this.scrollingMap.movingSpeed = 0;
-    this.scrollingMap.input.allowVerticalDrag = false;
+    
     
             
             
