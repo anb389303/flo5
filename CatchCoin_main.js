@@ -9,7 +9,7 @@
       const GAME_TIME = 60;
 
        
-       var LEFT=1;
+    
       // define Keyboard
       var keys;
       // define characters and objects
@@ -241,8 +241,8 @@
      
             
             
-           if (game.input.pointer1.isDown){ if (Math.floor(game.input.x/(game.width/2)=== LEFT){ knight.body.velocity.x = 150;     
-                                                                                                knight.animations.play('right');    }  
+           if (game.input.pointer1.isDown){ knight.body.velocity.x = 150;    } 
+                                                                                             
                                          
         }
             
