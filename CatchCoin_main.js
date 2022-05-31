@@ -240,11 +240,7 @@
 
      
             
-            
-           if (game.input.pointer1.isDown){ knight.body.velocity.x = 150;    } 
-                                                                                             
-                                         
-        }
+          
             
                   
             
