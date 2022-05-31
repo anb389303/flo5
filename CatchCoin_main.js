@@ -250,7 +250,7 @@
         }
 
         // add Jump keypad funcitionality when hitting arrow up and knight is on the floor
-        if(game.input.activePointer && knight.body.touching.down){
+        if(keys.input.activePointer && knight.body.touching.down){
           knight.setVelocityY(-1200);
         }
 
