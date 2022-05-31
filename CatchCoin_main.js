@@ -238,19 +238,17 @@
         if (gameOver) return;
             
 
-            if (game.input.pointer1.isDown){          if (Math.floor(game.input.x/(game.width/2)) === LEFT) {           player.body.velocity.x = 150;      player.animations.play('right');    }    if (Math.floor(game.input.x/(game.width/2)) === RIGHT) { player.body.velocity.x = -150;  player.animations.play('left');    }    }
-else{ player.animations.stop();  player.frame = 4;  }
+     
             
             
-            
-            //if (game.input.pointer1.isDown){ if (Math.floor(game.input.x/(game.width/2)= LEFT){ knight.body.velocity.x = 150;     
-                                                                                              //  knight.animations.play('right');    }  
-                                       // if (Math.floor(game.input.x/(game.width/2)=RIGHT) { knight.body.velocity.x = -150;      
-                                                                                               // knight.animations.play('left');    }    
-       // }else{ knight.animations.stop();      knight.frame = 4;  }
+           if (game.input.pointer1.isDown){ if (Math.floor(game.input.x/(game.width/2)= LEFT){ knight.body.velocity.x = 150;     
+                                                                                                knight.animations.play('right');    }  
+                                       if (Math.floor(game.input.x/(game.width/2)=RIGHT) { knight.body.velocity.x = -150;      
+                                                                                                knight.animations.play('left');    }    
+        }else{ knight.animations.stop();      knight.frame = 4;  }
             
                   
-            //add move keypad funcitionality
+            
        
             
           
