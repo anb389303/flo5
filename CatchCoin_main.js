@@ -9,7 +9,7 @@
       const GAME_TIME = 60;
 
        
-       
+       var LEFT=1;
       // define Keyboard
       var keys;
       // define characters and objects
