@@ -8,7 +8,24 @@
       const HEIGHT = 750;
       const GAME_TIME = 60;
 
-      // define Keyboard
+      
+
+var land;
+
+var shadow;
+
+var turret;
+
+
+
+
+
+
+
+
+var currentSpeed = 0;
+
+// define Keyboard
       var keys;
       // define characters and objects
       var knight;
@@ -178,8 +195,10 @@
 
         // initialize Keyboard
         keys = this.input.keyboard.createCursorKeys();
-
-        //define coin timer for dropping coins from sky
+     knight.bringToTop();
+    turret.bringToTop();
+            
+            //define coin timer for dropping coins from sky
         coinTimer = this.time.addEvent({
           //delay: 3000, // timer repeats all 3 sec.
           delay: Phaser.Math.Between(400,3000), // funciton repeats between given ms
@@ -224,6 +243,53 @@
         // execute only if !gameOver
         if (gameOver) return;
 
+            
+            
+            
+
+    if (keys.left.isDown)
+    {
+        knight.angle -= 4;
+    }
+    else if (key.right.isDown)
+    {
+        knight.angle += 4;
+    }
+
+    if (keys.up.isDown)
+    {
+        //  The speed we'll travel at
+        currentSpeed = 300;
+    }
+    else
+    {
+        if (currentSpeed > 0)
+        {
+            currentSpeed -= 4;
+        }
+    }
+
+    if (currentSpeed > 0)
+    {
+        game.physics.arcade.velocityFromRotation(knight.rotation, currentSpeed, knight.body.velocity);
+    }
+
+    land.tilePosition.x = -game.camera.x;
+    land.tilePosition.y = -game.camera.y;
+
+    //  Position all the parts and align rotations
+    shadow.x = knight.x;
+    shadow.y = knight.y;
+    shadow.rotation = knight.rotation;
+
+    turret.x = knight.x;
+    turret.y = knight.y;
+
+    turret.rotation = game.physics.arcade.angleToPointer(turret);
+            
+            
+            
+            
         //add move keypad funcitionality
         if(keys.left.isDown){
           if(keys.shift.isDown){
