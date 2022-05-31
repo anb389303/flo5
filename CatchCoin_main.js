@@ -221,7 +221,7 @@
       ****************************************************************/
       // gameUpdate run multible times
 
-if ( this.game.input.pointer1.isDown && this.knight.body.touching.down) {
+if ( this.game.input.pointer1.isDown) {
 this.knight.body.velocity.y = 500;
  }
 
