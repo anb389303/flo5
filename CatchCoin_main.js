@@ -221,9 +221,7 @@
       ****************************************************************/
       // gameUpdate run multible times
 
-if ( this.game.input.pointer1.isDown) {
-this.knight.body.velocity.y = 500;
- }
+
 
 
 
@@ -233,7 +231,9 @@ this.knight.body.velocity.y = 500;
         //monitoring inputs and telling game how to update
             
         
-            
+            if ( this.game.input.pointer1.isDown) {
+this.knight.body.velocity.y = 500;
+ }
             
             
 
