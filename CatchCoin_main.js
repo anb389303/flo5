@@ -237,7 +237,10 @@
         // execute only if !gameOver
         if (gameOver) return;
             
-if ((keys.up.isDown || onSwipe()) && knight.body.touching.down)  {      knight.body.velocity.y = -350;  }    
+
+            if (game.input.pointer1.isDown){          if (Math.floor(game.input.x/(game.width/2)) === LEFT) {           player.body.velocity.x = 150;      player.animations.play('right');    }    if (Math.floor(game.input.x/(game.width/2)) === RIGHT) { player.body.velocity.x = -150;  player.animations.play('left');    }    }
+else{ player.animations.stop();  player.frame = 4;  }
+            
             
             
             //if (game.input.pointer1.isDown){ if (Math.floor(game.input.x/(game.width/2)= LEFT){ knight.body.velocity.x = 150;     
