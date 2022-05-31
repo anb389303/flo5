@@ -10,6 +10,18 @@
 
       
 
+var land;
+
+var shadow;
+
+var turret;
+
+
+
+
+
+
+var currentSpeed = 0;
 
 
 // define Keyboard
